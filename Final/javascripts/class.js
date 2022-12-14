@@ -439,40 +439,11 @@ class World {
         step()
     }
 
-    startCharacterLoop() {
-        const step = () => {
-
-            //Clear Canvas
-            this.c.clearRect(0, 0, this.canvas.width, this.canvas.height)
-
-            //Character
-            this.character.sprite.draw(this.c)
-            if (this.isEmailed){
-                this.character.sprite.setAnimation("squat")
-            }
-            
-            requestAnimationFrame(() => {
-                step()
-            }) 
-        }
-        step()
-    }
-
     init() {
         this.map = new Map(window.Maps.communityRoom)
         // this.map.mountObjects()
         this.directionInput = new DirectionInput()
         this.directionInput.init()
         this.startGameLoop()
-    }
-
-    LoginInit() {
-        this.character = new Person({
-            x: -100,
-            y: -160,
-            scale: 512,
-            src: "../images/hero-1.png"
-        })
-        this.startCharacterLoop()
     }
 }
